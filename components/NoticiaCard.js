@@ -1,13 +1,13 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet, Image, View } from 'react-native';
 
 const NoticiaCard = ({ noticia, onPress }) => {
   return (
     <TouchableOpacity style={styles.card} onPress={onPress}>
       
-      {contato.image ? (
+      {noticia.image ? (
         <Image
-          source={{ uri: contato.image }}
+          source={{ uri: noticia.image }}
           style={styles.image}
         />
       ) : (
@@ -18,11 +18,11 @@ const NoticiaCard = ({ noticia, onPress }) => {
 
       <View style={styles.content}>
         <Text style={styles.title} numberOfLines={2}>
-          {contato.title}
+          {noticia.title}
         </Text>
 
         <Text style={styles.body} numberOfLines={3}>
-          {contato.body}
+          {noticia.body || "Clique para ler mais..."}
         </Text>
       </View>
     </TouchableOpacity>
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     marginBottom: 16,
     overflow: "hidden",
-    elevation: 2, // sombra no Android
+    elevation: 2,
     shadowColor: "#000",
     shadowOpacity: 0.1,
     shadowRadius: 4,
